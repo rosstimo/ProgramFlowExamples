@@ -5,27 +5,33 @@ Option Compare Text
 Module ProgramFlowExamples
 
     Sub Main()
-        Dim userResponse As String
-        Dim userNumber As Integer
+        Dim userInput As String
+        Dim firstNumber As Integer
         Dim secondNumber As Integer = 5
-        Dim result As Integer
-        Dim isValidNumber As Boolean
+        Dim calculationResult As Integer
+        Dim userInputIsValid As Boolean
 
+        'Prompt user for a whole number
+        'Repeat until the user provides a valid number or quits
         Do
-            isValidNumber = True
+            'prompt user and display the user input
+            userInputIsValid = True
             Console.WriteLine("Please enter a whole number or Q to quit")
-            userResponse = Console.ReadLine()
-            Console.WriteLine($"You entered {userResponse}")
+            userInput = Console.ReadLine()
+            Console.WriteLine($"You entered {userInput}")
+            'test the user input
+            'on valid input perform the calculation and display the result
             Try
-                userNumber = CInt(userResponse)
-                result = userNumber + secondNumber
-                Console.WriteLine($"Result: {userNumber} + {secondNumber} = {result}")
+                firstNumber = CInt(userInput)
+                calculationResult = firstNumber + secondNumber
+                Console.WriteLine($"Result: {firstNumber} + {secondNumber} = {calculationResult}")
             Catch
-                If userResponse <> "Q" Then
-                    isValidNumber = False
+                If userInput <> "Q" Then
+                    userInputIsValid = False
                 End If
             End Try
-        Loop Until isValidNumber = True And (userResponse <> "Q" Or userResponse <> "q")
+        Loop Until userInputIsValid = True
+        'clean exit
         Console.WriteLine("Have a nice day!!!")
         Console.Read()
     End Sub
